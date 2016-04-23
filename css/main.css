@@ -1,10 +1,15 @@
 .text1 {
-	color: rgb(41, 201, 41);
+	color: rgb(102, 255, 102);
+}
+.text0
+{
+	color: #ffcc66;
 }
 .text3
 {
 	display: table-cell;
 	vertical-align: middle;
+	
 }
 .text2 img
 {
@@ -20,5 +25,10 @@
 }
 html,body
 {
-	font-family: "微軟正黑體"
+	font-family: "微軟正黑體";
+	font-size: 14pt;
+}
+#connect_again_text
+{
+	color: white;
 }
