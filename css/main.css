@@ -1,0 +1,24 @@
+.text1 {
+	color: rgb(41, 201, 41);
+}
+.text3
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+.text2 img
+{
+	height: 1.5em;
+	margin-right: 0.2em;
+}
+.text2
+{
+	vertical-align: middle;
+	display: table;
+	color: white;
+	text-shadow: 1px 1px 1px #313233;
+}
+html,body
+{
+	font-family: "微軟正黑體"
+}

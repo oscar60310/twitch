@@ -1,0 +1,3 @@
+﻿Twitch ID,暱稱
+oscar60310,神
+mamie30724,狗
