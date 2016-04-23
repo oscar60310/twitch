@@ -23,7 +23,7 @@ class IRC:
     #client.connect(("irc.chat.twitch.tv", 6667))
     try:
       self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-      #self.client.connect(("192.168.88.18", 6667))
+      #self.client.connect(("61.70.57.105", 6667))
       self.client.connect(("irc.chat.twitch.tv", 6667))
       self.timed = True
       thread.start_new_thread( self.timer, ("Thread-3",))

@@ -15,7 +15,7 @@ def server_go(threadName):
    server.start_server(10000)
 
 def irc_connect(threadName):
-  global Nick
+  global Nick,IRC
   global Follow
   global pre_user,pre_room,pre_pass
   Nick.load()
@@ -23,12 +23,12 @@ def irc_connect(threadName):
   while server.wss == []:
   	time.sleep(1)
 
-  server.send('IConnecting Twitch server')
+  server.send('1Connecting Twitch server')
 
   while not IRC.connect():
   	time.sleep(5)
 
-  server.send('IServer Connected')
+  server.send('1Server Connected')
   IRC.send('PASS ' + pre_pass + '\n')
   IRC.send('NICK ' + pre_user + '\n')
   IRC.send('JOIN #'+ pre_room + '\n')
@@ -43,8 +43,13 @@ def irc_connect(threadName):
         msgoab(ss[ns][0:len(ss[ns])-1])
       tmp = ss[len(ss)-1]
 def msgoab(msg):
+  global IRC
+  #print msg
   if msg == "PING :tmi.twitch.tv":
-    IRC.send("PONG :tmi.twitch.tv")
+    IRC.send("PONG :tmi.twitch.tv\n")
+    print 'ping call'
+  elif msg == ":tmi.twitch.tv PONG tmi.twitch.tv :103":
+    print 'ping recall'
   else:
     global inroom
     if inroom:
@@ -55,8 +60,11 @@ def msgoab(msg):
       if len(st) > 3:
         for tm in range(3,len(st)):
           text += ":" + st[tm]
+      global pre_user
       global Nick
-      if Follow.check(user):
+      if user == pre_user:
+      	server.send("2<img src='setting/owner.png'/><span class='text3'>" + Nick.change(user) + ": " + text + "</span>")
+      elif Follow.check(user):
         server.send("2<img src='setting/follow.png'/><span class='text3'>" + Nick.change(user) + ": " + text + "</span>")
       else:
         server.send("2" + Nick.change(user) + ": " + text)
@@ -97,6 +105,11 @@ if len(sys.argv) >= 4:
       Nick.load()
     elif x == "follow load":
       Follow.get_follow()
+    elif x == "ping":
+      print 'ping call'
+      r = IRC.send('PING :103\n')
+      if not r:
+        print 'limit'
     else:
       r = IRC.send(x)
       if not r:
