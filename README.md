@@ -39,9 +39,41 @@
 <pre><code>python main.py [YourTwitchName] [Password] [ChatRoom]</code></pre>
 
 where YourTwitchName is your TwitchID, and Password is the string startwith "oauth", ChatRoom is the room you want to show.<br>
-example: python oscar60310 oauth:*** oscar60310<br>
+example: 
+<pre><code>python oscar60310 oauth:*** oscar60310</code></pre>
 will use ID oscar60310 join myself chatroom.
+<br>
+(5) Open your OBS or other stream software, create a new CLR Browser.<br>
+(6) URL enter "D:\download\twitch-master\1.html" (the position of 1.html), and ckick OK.<br>
+(7) Double ckicking the start.bat file you created, and you should see the message below.<br>
+<img src="http://i.imgur.com/laRUsJD.png"/><br>
+(8) Click "Preview" on OBS, and you will see join message on your OBS window.<br>
+<img src="http://i.imgur.com/L3tgxNk.png"/><br><br>
+Now, you can get the Chatroom on your stream.<br>
+<img src="http://i.imgur.com/0Je1wzT.png"/><br><br>
+</li>
+<li>Custom nick<br>
+(1) Open setting/nick.txt<br>
+(2) Add "TwichID,nick" below the text,one line for one user.<br>
+<img src="http://i.imgur.com/UoRlFTo.png"/><br>
+(3) Restart server or type "nick load" to reload the nick list.
+</li>
+
+<li>Custom Icon<br>
+(1) Your can replace the file "following.png" and "owner.png" for the icon to follower and owner.
+</li>
+
+<li>Command<br>
+(1) stop - stop the server.<br>
+(2) nick load - reload the nick.txt file.<br>
+(3) follow load - update the followers list.<br>
+(4) ping - ping the Twitch server.<br>
 
 </li>
+
 </ol>
 
+#使用規定 Notices
+您可以使用這些程式在您的實況頁面，可以的話在說明頁面加上我們的連結<br>
+https://github.com/oscar60310/twitch<br><br>
+You can use this code on your streams, just leave a credit on your page.
