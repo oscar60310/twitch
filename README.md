@@ -36,7 +36,8 @@
 (3) Visit <a href="http://twitchapps.com/tmi/">Twitch Chat OAuth Password Generator</a>, generate a password and copy it.<br>
 <img src="http://i.imgur.com/OUz1s6j.png"/><br>
 (4) Create a file "start.bat" in the folder twitch-master, and paste the code bellow.<br>
-<font color='red'>python main.py [YourTwitchName] [Password] [ChatRoom]</font><br>
+<pre><code>python main.py [YourTwitchName] [Password] [ChatRoom]</code></pre>
+
 where YourTwitchName is your TwitchID, and Password is the string startwith "oauth", ChatRoom is the room you want to show.<br>
 example: python oscar60310 oauth:*** oscar60310<br>
 will use ID oscar60310 join myself chatroom.
