@@ -37,7 +37,8 @@
 <img src="http://i.imgur.com/OUz1s6j.png"/><br>
 (4) Create a file "start.bat" in the folder twitch-master, and paste the code bellow.
 </li>
-```
+
+```bat
 @echo off
 python main.py [YourTwitchName] [Password] [ChatRoom]
 PAUSE
