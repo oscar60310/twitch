@@ -36,11 +36,10 @@
 (3) Visit <a href="http://twitchapps.com/tmi/">Twitch Chat OAuth Password Generator</a>, generate a password and copy it.<br>
 <img src="http://i.imgur.com/OUz1s6j.png"/><br>
 (4) Create a file "start.bat" in the folder twitch-master, and paste the code bellow.
-
+</li>
+</ol>
 ```bat
 @echo off
 python main.py [YourTwitchName] [Password] [ChatRoom]
 PAUSE
 ```
-</li>
-</ol>
