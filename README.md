@@ -28,6 +28,20 @@
 (2) Enter "pip install Tornado".<br>
 <img src="http://i.imgur.com/GMOQDMQ.png"/>
 
-
 </li>
+<li>Setting Project<br>
+(1) Download our code at <a href = "https://github.com/oscar60310/twitch">GitHub</a><br>
+(2) Click "Download ZIP", download and unzip it.<br>
+<img src="http://i.imgur.com/t435iwF.png"/>
+(3) Visit <a href="http://twitchapps.com/tmi/">Twitch Chat OAuth Password Generator</a>, generate a password and copy it.<br>
+<img src="http://i.imgur.com/OUz1s6j.png"/><br>
+(4) Create a file "start.bat" in the folder twitch-master, and paste the code bellow.
+</li>
+```
+@echo off
+python main.py [YourTwitchName] [Password] [ChatRoom]
+PAUSE
+```
+
+
 </ol>
