@@ -47,7 +47,7 @@ def msgoab(msg):
   #print msg
   if msg == "PING :tmi.twitch.tv":
     IRC.send("PONG :tmi.twitch.tv\n")
-    print 'ping call'
+    #print 'ping call'
   elif msg == ":tmi.twitch.tv PONG tmi.twitch.tv :103":
     print 'ping recall'
   else:
@@ -74,6 +74,8 @@ def msgoab(msg):
         if msg.split(':')[2] == "End of /NAMES list":
           inroom = True
           server.send("1JOIN")
+        elif msg.split(':')[2] == "Error logging in":
+          server.send('0Loggin error, please check your password.')
       except:
         pass
 
@@ -111,7 +113,7 @@ if len(sys.argv) >= 4:
       if not r:
         print 'limit'
     else:
-      r = IRC.send(x)
+      r = IRC.send(x + '\n')
       if not r:
         print 'limit'
 else:

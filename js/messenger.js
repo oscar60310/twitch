@@ -5,6 +5,7 @@ function alert_msg (msg,code)
 	   2 user
 	   3 follow
 	*/
+
 	$("#output").append("<div class='text"+code+"'>"+msg+"</div>");
 	$("html, body").animate({ scrollTop: $(document).height() }, "fast");
 }
