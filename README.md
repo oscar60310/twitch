@@ -38,7 +38,7 @@
 (4) Create a file "start.bat" in the folder twitch-master, and paste the code bellow.
 </li>
 
-```bat
+```JAVA
 @echo off
 python main.py [YourTwitchName] [Password] [ChatRoom]
 PAUSE
