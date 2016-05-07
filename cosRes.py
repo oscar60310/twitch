@@ -23,7 +23,7 @@ class cosRes:
     else:
       print 'sound disable.'
     self.lastTime = datetime.datetime.now()
-
+    self.startTime = datetime.datetime.now()
     file.close()
 
     global send,re
@@ -69,7 +69,10 @@ class cosRes:
       cdm = int(timepast.total_seconds()) - self.cd_command 
       if cdm > 0 :
       	self.lastTime_command = datetime.datetime.now()
-      	msg_reply = re[send.index(text)].replace("-id-",id).replace("-Name-",name)
+        open_time = datetime.datetime.now() - self.startTime # opening time count
+        open_time_sec = int(open_time.total_seconds())
+        open_time_str = str(open_time_sec/3600) + ':' + str(open_time_sec % 3600 / 60) + ':' + str(open_time_sec % 60)
+      	msg_reply = re[send.index(text)].replace("-id-",id).replace("-Name-",name).replace("-Open_time-",open_time_str)
         self.msg(msg_reply)
       else:
         print "Wait %d seconds to auto reply." % -cdm 

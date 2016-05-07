@@ -5,6 +5,7 @@ import irc
 import nick
 import follow
 import sys
+import cosRes
 inroom = False
 # Define a function for the thread   
 pre_user = ""
@@ -18,6 +19,9 @@ def irc_connect(threadName):
   global Nick,IRC
   global Follow
   global pre_user,pre_room,pre_pass
+  global cos
+  cos = cosRes.cosRes(IRC,pre_room,server)
+  cos.load()
   Nick.load()
   Follow.get_follow()
   while server.wss == []:
@@ -68,6 +72,9 @@ def msgoab(msg):
         server.send("2<img src='setting/follow.png'/><span class='text3'>" + Nick.change(user) + ": " + text + "</span>")
       else:
         server.send("2" + Nick.change(user) + ": " + text)
+      #response for text
+      cos.cos_input(text,user,Nick.change(user))
+
       #server.send(msg)
     else:
       try:
@@ -107,6 +114,8 @@ if len(sys.argv) >= 4:
       Nick.load()
     elif x == "follow load":
       Follow.get_follow()
+    elif x == "setting load":
+      cos.load()
     elif x == "ping":
       print 'ping call'
       r = IRC.send('PING :103\n')

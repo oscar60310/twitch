@@ -33,6 +33,14 @@ function onMessage(evt)
     
     if (s == "PONG")
         return;
+    else if (s[0] == 'p')
+    {
+        var text = "";
+        for (var i = 1 ; i<s.length;i++)
+            text += s[i]
+        play(text)
+        return;
+    }
     var text = "";
     for (var i = 1 ; i<s.length;i++)
         text += s[i]
