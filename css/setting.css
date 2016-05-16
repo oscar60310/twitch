@@ -1,0 +1,24 @@
+
+#main
+{
+	margin-left: 1em;
+	margin-right: 1em;
+}
+.show_d
+{
+	font-size: 12pt;
+}
+.det
+{
+	font-size: 12pt;
+	color: blue;
+}
+.chose
+{
+	font-size: 12pt;
+}
+.cd_text
+{
+	width: 3em;
+	display: inline;
+}

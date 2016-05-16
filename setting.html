@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>Twitch IRC setting</title>
+<head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta charset="UTF-8"> 
+</head>
+<link rel="stylesheet" type="text/css" href="css/setting.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/setting.js"></script>
+<div id="main">
+<h2>Twitch IRC Setting page</h2>
+<button type="button" class="btn btn-primary" onclick='update();'>Update</button>
+&nbsp;<span id='statu' class='det'></span>
+<h3>Custom Name
+<div class="det">[Twitch ID],[Name] ex:oscar60310,owner -> Display "owner" on chatroom when oscar60310 say something.</div>
+</h3>
+<textarea class="form-control" rows="5" id="cos_name"></textarea>
+<h3>Auto Reply
+
+<label class="radio-inline chose">
+  <input type="radio" name="auto" id="auto_T" value="option1"> Enable
+</label>
+<label class="radio-inline chose">
+  <input type="radio" name="auto" id="auto_F" value="option2"> Disable
+</label>
+<span class="chose">
+CD: 
+ <input  type="text" class="form-control cd_text" id="auto_cd">
+sec.
+</span>
+<div class="det">[key word],[replay] ex:hellow,Hi -id- -> Reply "Hi oscar60310" when oscar60310 say hellow</div>
+<div class="chose">-id-(Twitch ID) -Name-(Custom name) -Open_time-(Streaming time)</div>
+</h3>
+
+<textarea class="form-control" rows="5" id="Reply"></textarea>
+<h3>Sound
+
+<label class="radio-inline chose">
+  <input type="radio" name="sound" id="sound_T" value="option3"> Enable
+</label>
+<label class="radio-inline chose">
+  <input type="radio" name="sound" id="sound_F" value="option4"> Disable
+</label>
+<span class="chose">
+CD: 
+ <input  type="text" class="form-control cd_text" id="sound_cd">
+sec.
+</span>
+
+<div class="det">[key word],[MP3 name] ex:!!,surprise -> Play surprise.mp3 when viewers type !!</div>
+</h3>
+<textarea class="form-control" rows="5" id="Sound"></textarea>
+</div>

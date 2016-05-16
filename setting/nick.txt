@@ -1,3 +1,3 @@
-﻿Twitch ID,暱稱
-osCar60310,實況主
-oscar31147,測試
+Twitch ID,name
+oscar31147,Tester
+oscar60310,實況主
