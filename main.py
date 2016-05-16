@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import thread
 import time
 import server
@@ -6,6 +7,10 @@ import nick
 import follow
 import sys
 import cosRes
+import emoticons
+
+reload(sys)
+sys.setdefaultencoding("utf-8")
 inroom = False
 # Define a function for the thread   
 pre_user = ""
@@ -19,11 +24,14 @@ def irc_connect(threadName):
   global Nick,IRC
   global Follow
   global pre_user,pre_room,pre_pass
-  global cos
+  global cos,emo
   cos = cosRes.cosRes(IRC,pre_room,server)
+  emo = emoticons.emotion()
+
   cos.load()
   Nick.load()
   Follow.get_follow()
+  emo.load()
   while server.wss == []:
   	time.sleep(1)
 
@@ -40,8 +48,10 @@ def irc_connect(threadName):
   while IRC.timed:
     s = IRC.recv()
     tmp += s
+
     #print tmp
     if tmp.find('\n') != -1:
+      
       ss = tmp.split('\n')
       for ns in range(len(ss)-1):
         msgoab(ss[ns][0:len(ss[ns])-1])
@@ -67,12 +77,13 @@ def msgoab(msg):
       global pre_user
       global Nick
       if user == pre_user:
-      	server.send("2<img src='setting/owner.png'/><span class='text3'>" + Nick.change(user) + ": " + text + "</span>")
+      	server.send("2<img src='setting/owner.png'/><span class='text3'>" + Nick.change(user) + ": " + emo.change(text).encode('utf-8').strip() + "</span>")
       elif Follow.check(user):
-        server.send("2<img src='setting/follow.png'/><span class='text3'>" + Nick.change(user) + ": " + text + "</span>")
+        server.send("2<img src='setting/follow.png'/><span class='text3'>" + Nick.change(user) + ": " + emo.change(text).encode('utf-8').strip() + "</span>")
       else:
         server.send("2" + Nick.change(user) + ": " + text)
       #response for text
+
       cos.cos_input(text,user,Nick.change(user))
 
       #server.send(msg)
@@ -99,6 +110,8 @@ if len(sys.argv) >= 4:
    
   except:
     print "Error: unable to start thread"
+
+
   IRC = irc.IRC()
   Nick = nick.Nick()
   Follow = follow.follow(pre_room)

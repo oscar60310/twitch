@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 class cosRes:
   def load(self):
@@ -30,12 +31,13 @@ class cosRes:
     send = []
     re = []
     file = open('setting/automsg.txt','r')
-    content = file.read()
+    content = file.read().decode('utf-8')
     ss = content.split('\n')
     setting = ss[0]
     ss.pop(0)
     number = len(ss)
     self.cd_command = int(setting.split(',')[3])
+
     if setting.split(',')[2] == 'true':
       for s in ss:
         if s.find(',') != -1:
@@ -56,6 +58,7 @@ class cosRes:
   def cos_input(self,text,id,name):
     #print text
     global sound,src,send,re
+
     if text in sound:
       timepast = datetime.datetime.now() - self.lastTime
       cdm = int(timepast.total_seconds()) - self.cd 
