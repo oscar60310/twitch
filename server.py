@@ -18,8 +18,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         wss.append(self)
     def on_message(self, message):
         re = textHand.rec(message)
-        if re:
+        if re != "unknow":
           self.write_message(re)
+        else:
+          print message
+          command(message)
  
     def on_close(self):
         print 'connection closed'
@@ -42,8 +45,9 @@ def send(message):
 
 
 
-def start_server(port):
-
+def start_server(port,com):
+  global command
+  command = com;
   http_server = tornado.httpserver.HTTPServer(application)
   http_server.listen(port)
   myIP = "127.0.0.1"

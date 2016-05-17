@@ -3,7 +3,9 @@ var wsUri = "ws://127.0.0.1:10000/ws";
 var sound,auto,nick;
 var load_setting = false;
 var output;
-connect_web();         
+var sound_cd_timer = 0;
+connect_web();        
+counter(); 
 function connect_web() 
 {
     console.log("try to connect");
@@ -25,7 +27,11 @@ function onClose(evt)
 { 
     
 }
-
+function re_Nick()
+{
+    update();
+    doSend('nick load');
+}
 function onMessage(evt) 
 { 
     var s = evt.data;
@@ -66,10 +72,7 @@ function onMessage(evt)
                 return;
             else if (s[0] == 'p')
             {
-                /*var text = "";
-                for (var i = 1 ; i<s.length;i++)
-                   text += s[i]
-                play(text)*/
+                sound_cd_timer = parseInt(sound.name_t.split(',')[3])
                 return;
             }
             var text = "";
@@ -113,4 +116,11 @@ function update()
 
 	doSend("Update<setting>" + nick_sent + "<setting>" + sound_sent
 	 + "<setting>" + auto_sent);
+}
+function counter()
+{
+   $("#sound_cd_show").html(sound_cd_timer);
+    if (sound_cd_timer > 0)
+        sound_cd_timer -= 1;
+    setTimeout(counter,1000);
 }

@@ -14,11 +14,14 @@
 <div class='chose'>Thank you for choosing my programs, if can you leave a link on your info page to my <a href="https://github.com/oscar60310/twitch" target="_blank">website</a>, I will be very 	
 appreciate!<br>
 <button type="button" class="btn btn-primary" onclick='update();'>Update</button>
-&nbsp;<span id='statu' class='det'></span>
+&nbsp;
+
+<h3>Info <span id='statu' class='det'></span></h3>
+<div>Sound CD: <span id="sound_cd_show"></span></div>
 <h3>Icon</h3>
 Owner: <img class='small_img' src='setting/owner.png'> You can change this by replace the "owner.png" file.<br>
 Follower: <img class='small_img' src='setting/follow.png'> You can change this by replace the "follow.png" file.
-<h3>Custom Name
+<h3>Custom Name <button type="button" class="btn btn-primary" onclick='re_Nick();'>Reload Nick</button>
 <div class="det">[Twitch ID],[Name] ex:oscar60310,owner -> Display "owner" on chatroom when oscar60310 say something.</div>
 </h3>
 <textarea class="form-control" rows="5" id="cos_name"></textarea>
@@ -60,6 +63,7 @@ sec.
 </div>
 <div id="chat">
 <h3>Instant Information</h3>
+
 <div id="output"></div>
 </div>
 <script src="js/messenger.js"></script>

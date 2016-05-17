@@ -16,9 +16,32 @@ inroom = False
 pre_user = ""
 pre_pass = ""
 pre_room = ""
+stop = False
+def command(x):
+  
+  if x == "stop":
+    stop = True
+    server.stop_server()
+    IRC.stop()
+    sys.exit()
+  elif x == "nick load":
+    Nick.load()
+  elif x == "follow load":
+    Follow.get_follow()
+  elif x == "setting load":
+    cos.load()
+  elif x == "ping":
+    print 'ping call'
+    r = IRC.send('PING :103\n')
+    if not r:
+      print 'limit'
+  else:
+    r = IRC.send(x + '\n')
+    if not r:
+      print 'limit'
 
 def server_go(threadName):
-   server.start_server(10000)
+   server.start_server(10000,command)
 
 def irc_connect(threadName):
   global Nick,IRC
@@ -117,26 +140,10 @@ if len(sys.argv) >= 4:
   Follow = follow.follow(pre_room)
 
 
-  while True:
+  while True: 
     x = raw_input("")
-    if x == "stop":
-  	  server.stop_server()
-  	  IRC.stop()
-  	  break
-    elif x == "nick load":
-      Nick.load()
-    elif x == "follow load":
-      Follow.get_follow()
-    elif x == "setting load":
-      cos.load()
-    elif x == "ping":
-      print 'ping call'
-      r = IRC.send('PING :103\n')
-      if not r:
-        print 'limit'
-    else:
-      r = IRC.send(x + '\n')
-      if not r:
-        print 'limit'
+    command(x)
+  
+  
 else:
   print 'not enough args'
