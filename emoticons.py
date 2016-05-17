@@ -15,7 +15,8 @@ class emotion:
     print 'Successful load %d emoticons' % len(emoticons)
   def search(self,text):
     try:
-      text = urllib.quote(text)
+      #text = urllib.quote(text)
+
       if text not in self.regex:
         return "Null"
       position = self.regex.index(text)
@@ -23,6 +24,7 @@ class emotion:
     except:
       return "Null"
   def change(self,text):
+
     ss = text.split(' ')
     text_return = ""
     for s in ss:
