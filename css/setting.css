@@ -1,8 +1,14 @@
-
+html,body
+{
+	 height: 100%; 
+}
 #main
 {
 	margin-left: 1em;
 	margin-right: 1em;
+	width: calc(100% - 25em);
+	height: 100%;
+	overflow-y: scroll;
 }
 .show_d
 {
@@ -25,4 +31,37 @@
 .small_img
 {
 	height: 1.5em;
+}
+#chat
+{
+	padding-left: 1em;
+	width: 24em;
+	position: absolute;
+	right: 0;
+	background-color: #fcf9f9;
+	top: 0;
+	height: 100%;
+}
+.text1 {
+	
+}
+.text0
+{
+
+}
+.text3
+{
+	display: table-cell;
+	vertical-align: middle;
+	
+}
+.text2 img
+{
+	height: 1.5em;
+	margin-right: 0.2em;
+}
+.text2
+{
+	vertical-align: middle;
+	display: table;
 }

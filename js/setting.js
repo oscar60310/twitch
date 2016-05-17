@@ -1,10 +1,13 @@
 console.log("js loaded.");
 var wsUri = "ws://127.0.0.1:10000/ws";
+var sound,auto,nick;
+var load_setting = false;
+var output;
 connect_web();         
 function connect_web() 
 {
     console.log("try to connect");
-
+    output = document.getElementById("output");
     $("#statu").html("Try to connect...");
     websocket = new WebSocket(wsUri);
     websocket.onopen = function(evt) {onOpen(evt)};
@@ -15,18 +18,18 @@ function connect_web()
 function onOpen(evt) 
 {
 	$("#statu").html("successful connected.");
+    load_setting = false;
     doSend("SETTING"); 
 }  
 function onClose(evt) 
 { 
     
 }
-var sound,auto,nick;
 
 function onMessage(evt) 
 { 
     var s = evt.data;
-    console.log(s);
+    //console.log(s);
     if(s == "Update_OK")
     {
     	alert("Successful updated.")
@@ -34,25 +37,46 @@ function onMessage(evt)
     }
     else
     {
-    	var set = s.split('<setting>')
+        if(!load_setting)
+        {
+            load_setting = true;
+    	   var set = s.split('<setting>')
     
-    	auto = load_set(set[0]);
-    	nick = load_set(set[1]);
-   	 	sound = load_set(set[2]);
+    	   auto = load_set(set[0]);
+    	   nick = load_set(set[1]);
+   	 	   sound = load_set(set[2]);
    
-   	 	$("#cos_name").val(nick.name);
-    	$("#Sound").val(sound.name);
-    	$("#Reply").val(auto.name);
-    	if(sound.name_t.split(',')[2] == 'true')
-    		$("#sound_T").prop("checked",true);
-    	else
+   	 	   $("#cos_name").val(nick.name);
+    	   $("#Sound").val(sound.name);
+    	   $("#Reply").val(auto.name);
+    	   if(sound.name_t.split(',')[2] == 'true')
+    		  $("#sound_T").prop("checked",true);
+    	   else
     		$("#sound_F").prop("checked",true);
-    	if(auto.name_t.split(',')[2] == 'true')
-    		$("#auto_T").prop("checked",true);
-    	else
-    		$("#auto_F").prop("checked",true);
-    	$("#auto_cd").val(auto.name_t.split(',')[3]);
-    	$("#sound_cd").val(sound.name_t.split(',')[3]);
+    	   if(auto.name_t.split(',')[2] == 'true')
+    		  $("#auto_T").prop("checked",true);
+    	   else
+    		  $("#auto_F").prop("checked",true);
+    	   $("#auto_cd").val(auto.name_t.split(',')[3]);
+    	   $("#sound_cd").val(sound.name_t.split(',')[3]);
+        }
+        else
+        {
+            if (s == "PONG")
+                return;
+            else if (s[0] == 'p')
+            {
+                /*var text = "";
+                for (var i = 1 ; i<s.length;i++)
+                   text += s[i]
+                play(text)*/
+                return;
+            }
+            var text = "";
+            for (var i = 1 ; i<s.length;i++)
+                text += s[i]
+            alert_msg(text,s[0]);
+        }
     }
     
 }  

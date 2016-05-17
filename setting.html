@@ -8,9 +8,11 @@
 <link rel="stylesheet" type="text/css" href="css/setting.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="js/setting.js"></script>
+
 <div id="main">
 <h2>Twitch IRC Setting page</h2>
+<div class='chose'>Thank you for choosing my programs, if can you leave a link on your info page to my <a href="https://github.com/oscar60310/twitch" target="_blank">website</a>, I will be very 	
+appreciate!<br>
 <button type="button" class="btn btn-primary" onclick='update();'>Update</button>
 &nbsp;<span id='statu' class='det'></span>
 <h3>Icon</h3>
@@ -56,3 +58,9 @@ sec.
 </h3>
 <textarea class="form-control" rows="5" id="Sound"></textarea>
 </div>
+<div id="chat">
+<h3>Instant Information</h3>
+<div id="output"></div>
+</div>
+<script src="js/messenger.js"></script>
+<script src="js/setting.js"></script>
