@@ -26,7 +26,7 @@ Follower: <img class='small_img' src='setting/follow.png'> You can change this b
 </h3>
 <textarea class="form-control" rows="5" id="cos_name"></textarea>
 <h3>Auto Reply
-
+ 
 <label class="radio-inline chose">
   <input type="radio" name="auto" id="auto_T" value="option1"> Enable
 </label>
@@ -38,12 +38,13 @@ CD:
  <input  type="text" class="form-control cd_text" id="auto_cd">
 sec.
 </span>
+<button type="button" class="btn btn-primary" onclick='re_Setting();'>Reload</button>
 <div class="det">[key word],[replay] ex:hellow,Hi -id- -> Reply "Hi oscar60310" when oscar60310 say hellow</div>
 <div class="chose">-id-(Twitch ID) -Name-(Custom name) -Open_time-(Streaming time)</div>
 </h3>
 
 <textarea class="form-control" rows="5" id="Reply"></textarea>
-<h3>Sound
+<h3>Sound 
 
 <label class="radio-inline chose">
   <input type="radio" name="sound" id="sound_T" value="option3"> Enable
@@ -56,7 +57,7 @@ CD:
  <input  type="text" class="form-control cd_text" id="sound_cd">
 sec.
 </span>
-
+<button type="button" class="btn btn-primary" onclick='re_Setting();'>Reload</button>
 <div class="det">[key word],[MP3 name] ex:!!,surprise -> Play surprise.mp3 when viewers type !!</div>
 </h3>
 <textarea class="form-control" rows="5" id="Sound"></textarea>

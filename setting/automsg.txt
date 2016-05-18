@@ -2,4 +2,4 @@
 Hi,Hellow @-id-，Welcome
 早安,早安 -Name-
 開台時間,開了 -Open_time-
-跟誰玩,我自己玩
+跟誰玩,我自己玩喔

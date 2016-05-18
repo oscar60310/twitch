@@ -24,7 +24,7 @@ class cosRes:
     else:
       print 'sound disable.'
     self.lastTime = datetime.datetime.now()
-    self.startTime = datetime.datetime.now()
+    
     file.close()
 
     global send,re
@@ -85,3 +85,4 @@ class cosRes:
     self.IRC = IRC
     self.room = room
     self.Server = Server
+    self.startTime = datetime.datetime.now()

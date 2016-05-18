@@ -32,6 +32,11 @@ function re_Nick()
     update();
     doSend('nick load');
 }
+function re_Setting()
+{
+    update();
+    doSend('setting load');
+}
 function onMessage(evt) 
 { 
     var s = evt.data;
@@ -39,7 +44,7 @@ function onMessage(evt)
     if(s == "Update_OK")
     {
     	alert("Successful updated.")
-    	location.reload(); 
+    	//location.reload(); 
     }
     else
     {
