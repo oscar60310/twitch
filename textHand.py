@@ -1,4 +1,4 @@
-def rec(msg):
+def rec(msg,name):
   if msg == "PING":
     return "PONG"
   elif msg == "SETTING":
@@ -14,6 +14,7 @@ def rec(msg):
     file = open('setting/sound.txt','r')
     content += file.read()
     file.close()
+    content += "<setting>\n" + name
     return content
   elif msg.startswith('Update'):
     s = msg.split('<setting>');

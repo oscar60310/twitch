@@ -4,12 +4,35 @@
 <head>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
+
 </head>
 <link rel="stylesheet" type="text/css" href="css/setting.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
 <div id="main">
+<div id = "ins_all">
+<h2 id="top_name">Not connected.</h2>
+
+<iframe id="vedshow" class='ved' width = '70%' height = '500px' src=""></iframe>
+<div id="ins_det">
+<div class='det_label'>Watching Now</div>
+<div class='det_val'><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span id='watching_now'>n/a</span></div>
+<br>
+<div class='det_label'>Game</div>
+<div class='det_val'><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp;<span id='game_name'>n/a</span></div>
+<br>
+<div class='det_label'>Followers</div>
+<div class='det_val'><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;<span id='followers'>n/a</span></div>
+
+<br>
+<div class='det_label'>Last Update</div>
+<div class='det_val'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<span id='last_update'>n/a</span></div>
+
+</div>
+</div>
+<div id="setting_page">
 <h2>Twitch IRC Setting page</h2>
 <div class='chose'>Thank you for choosing my programs, if can you leave a link on your info page to my <a href="https://github.com/oscar60310/twitch" target="_blank">website</a>, I will be very 	
 appreciate!<br>
@@ -62,8 +85,9 @@ sec.
 </h3>
 <textarea class="form-control" rows="5" id="Sound"></textarea>
 </div>
+</div>
 <div id="chat">
-<h3>Instant Information</h3>
+<h3>Chatroom</h3>
 
 <div id="output"></div>
 </div>

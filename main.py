@@ -41,7 +41,7 @@ def command(x):
       print 'limit'
 
 def server_go(threadName):
-   server.start_server(10000,command)
+   server.start_server(10000,command,pre_room)
 
 def irc_connect(threadName):
   global Nick,IRC
@@ -99,7 +99,7 @@ def msgoab(msg):
           text += ":" + st[tm]
       global pre_user
       global Nick
-      if user == pre_user:
+      if user == pre_room:
       	server.send("2<img src='setting/owner.png'/><span class='text3'>" + Nick.change(user) + ": " + emo.change(text).encode('utf-8').strip() + "</span>")
       elif Follow.check(user):
         server.send("2<img src='setting/follow.png'/><span class='text3'>" + Nick.change(user) + ": " + emo.change(text).encode('utf-8').strip() + "</span>")

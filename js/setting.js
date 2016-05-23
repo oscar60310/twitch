@@ -4,8 +4,10 @@ var sound,auto,nick;
 var load_setting = false;
 var output;
 var sound_cd_timer = 0;
+var last_viewer = 0;
 connect_web();        
 counter(); 
+var stream_name;
 function connect_web() 
 {
     console.log("try to connect");
@@ -70,6 +72,10 @@ function onMessage(evt)
     		  $("#auto_F").prop("checked",true);
     	   $("#auto_cd").val(auto.name_t.split(',')[3]);
     	   $("#sound_cd").val(sound.name_t.split(',')[3]);
+           stream_name = set[3];
+            $("#top_name").html(stream_name);
+           $('#vedshow').attr('src','http://player.twitch.tv/?channel=' + stream_name);
+           load_title();
         }
         else
         {
@@ -84,6 +90,7 @@ function onMessage(evt)
             for (var i = 1 ; i<s.length;i++)
                 text += s[i]
             alert_msg(text,s[0]);
+            $("#chat").animate({ scrollTop: $("#chat").height() }, "fast");
         }
     }
     
@@ -128,4 +135,37 @@ function counter()
     if (sound_cd_timer > 0)
         sound_cd_timer -= 1;
     setTimeout(counter,1000);
+}
+
+function load_title()
+{
+    $.get("https://api.twitch.tv/kraken/streams/" +stream_name , function(data) {
+     call_back_twitch(data);
+    });
+}
+function call_back_twitch(data)
+{
+    console.log(data);
+    if(data.stream == null)
+    {
+        $("#watching_now").html("Offline");
+    }
+    else
+    {
+        $("#top_name").html(data.stream.channel.status);
+        var viewer_slop = "";
+        if (data.stream.viewers > last_viewer)
+            viewer_slop = "<font color='green'><i class='fa fa-arrow-up' aria-hidden='true'></i></font>&nbsp;" + (data.stream.viewers - last_viewer);
+        else if (data.stream.viewers < last_viewer)
+            viewer_slop = "<font color='red'><i class='fa fa-arrow-down' aria-hidden='true'></i></font>&nbsp;" + (data.stream.viewers - last_viewer);
+        $("#watching_now").html(data.stream.viewers +"&nbsp;" +  viewer_slop);
+        last_viewer  = data.stream.viewers ;
+        $("#game_name").html(data.stream.channel.game);
+        $("#followers").html(data.stream.channel.followers);
+        date = data.stream.created_at;
+
+
+        $("#last_update").html(date.split('T')[0] + "&nbsp;" + date.split('T')[1].split('Z')[0] );
+    }
+    setTimeout(load_title,60000);
 }

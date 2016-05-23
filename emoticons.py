@@ -24,7 +24,7 @@ class emotion:
     except:
       return "Null"
   def change(self,text):
-
+    #print text
     ss = text.split(' ')
     text_return = ""
     for s in ss:

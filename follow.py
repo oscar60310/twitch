@@ -2,35 +2,37 @@ import urllib2
 import json
 class follow:
   def check(self,id):
-    if id in self.follower:
+    # new viewer
+    if id not in self.viwers:
+      f = self.check_user(id)
+      self.followed.append(f)
+      self.viwers.append(id)
+      if f:
+        print 'New viewer %s, followed.' % id
+      else:
+        print 'New viewer %s, Not followed.' % id
+    position = self.viwers.index(id)
+    return self.followed[position]
+
+  def check_user(self,id):
+    url = "https://api.twitch.tv/kraken/users/" + id + "/follows/channels/" + self.user
+    try:
+      s = urllib2.urlopen(url)
       return True
-    else:
+    except urllib2.HTTPError as e:
       return False
+
   def get_follow(self):
     url = "https://api.twitch.tv/kraken/channels/"+ self.user + "/follows"
-    self.follower = []
+    self.viwers = []
+    self.followed = []
     number = -1
-    num_count = 0
-    while url != "" and num_count != number:
-      s = urllib2.urlopen(url).read()
-      data = json.loads(s)
-      if number == -1:
-        number = int(data['_total'])
-      
-      member = data['follows']
-      for ms in member:
-        self.follower.append(ms['user']['name'])
-        num_count += 1
-        #print ms['user']['name']
-      if '_links' in data:
-      	if 'next' in data['_links']:
-      	  url = data['_links']['next']
-      	else:
-      	  url = ""
-      else:
-        url = ""
-    print 'Load %d followers' % number
+    s = urllib2.urlopen(url).read()
+    data = json.loads(s)
+    number = int(data['_total'])
+    print '%s has %d followers.' % (self.user,number)
 
   def __init__(self,user):
     self.user = user
-    self.follower = []
+    self.viwers = []
+    self.followed = []

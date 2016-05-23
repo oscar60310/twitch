@@ -17,7 +17,8 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print 'new connection'
         wss.append(self)
     def on_message(self, message):
-        re = textHand.rec(message)
+        global name
+        re = textHand.rec(message,name)
         if re != "unknow":
           self.write_message(re)
         else:
@@ -45,7 +46,9 @@ def send(message):
 
 
 
-def start_server(port,com):
+def start_server(port,com,id):
+  global name
+  name = id
   global command
   command = com;
   http_server = tornado.httpserver.HTTPServer(application)
