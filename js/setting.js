@@ -90,7 +90,7 @@ function onMessage(evt)
             for (var i = 1 ; i<s.length;i++)
                 text += s[i]
             alert_msg(text,s[0]);
-            $("#chat").animate({ scrollTop: $("#chat").height() }, "fast");
+            $("#chat").animate({ scrollTop: $("#chat").prop('scrollHeight') }, "fast");
         }
     }
     
